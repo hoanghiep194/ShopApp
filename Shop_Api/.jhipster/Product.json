@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "color",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "material",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "prodNew",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "inCollection",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20190320143356",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "product",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

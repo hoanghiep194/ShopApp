@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings
+    xmlns="http://java.sun.com/xml/ns/persistence/orm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_1.xsd"
+    version="2.0">
+
+    <named-native-query name = "getProduct" result-set-mapping="ProductXml">
+        <query>
+            SELECT p.id                 AS id,
+                   p.name               AS name,
+                   p.id_type            AS idType,
+                   t.name               AS nameType,
+                   p.price              AS price,
+                   p.color              AS color,
+                   p.material           AS material,
+                   p.description        AS description,
+                   GROUP_CONCAT(i.link) AS images
+            FROM product p
+            LEFT JOIN images i ON p.id = i.id_product
+            INNER JOIN product_type t ON t.id = p.id_type
+            WHERE p.new = 1
+            GROUP BY p.id
+            LIMIT 0,
+                  6
+        </query>
+    </named-native-query>
+
+    <sql-result-set-mapping name="ProductXml">
+        <constructor-result target-class="shop.api.service.dto.ProductDto">
+            <column name="id" class="java.lang.Long"/>
+            <column name="name"/>
+            <column name="idType" class="java.lang.Integer"/>
+            <column name="nameType"/>
+            <column name="price" class="java.lang.Float"/>
+            <column name="color"/>
+            <column name="material"/>
+            <column name="description"/>
+            <column name="images"/>
+        </constructor-result>
+    </sql-result-set-mapping>
+</entity-mappings>
+

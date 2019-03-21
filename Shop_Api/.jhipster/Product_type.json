@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20190321035414",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "product_type",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

@@ -1,0 +1,31 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "shop.api"
+    },
+    "jhipsterVersion": "5.7.0",
+    "applicationType": "monolith",
+    "baseName": "ShopApi",
+    "packageName": "shop.api",
+    "packageFolder": "shop/api",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTFiNDljNmJhNmU1ODljMDdmNGJmNzk3ZTJlOTRkMTEyMzQzYzQwNzU4ZjRhNDc5MmJjYjllMDdjZTZhZjA4YjE5NWVmOWQ1N2E5OWRiMzI1NDhjNTZhYTkzNmM4N2I2Yjg1ZmExNzlmMTIyNzUzMjljMzQ4ODUyMTcxNWY3MjY=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true
+  }
+}
