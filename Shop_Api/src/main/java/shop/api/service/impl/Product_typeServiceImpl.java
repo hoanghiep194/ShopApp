@@ -1,8 +1,8 @@
 package shop.api.service.impl;
 
 import shop.api.service.Product_typeService;
-import shop.api.domain.Product_type;
-import shop.api.repository.Product_typeRepository;
+import shop.api.domain.ProductType;
+import shop.api.repository.ProductTypeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,9 +21,9 @@ public class Product_typeServiceImpl implements Product_typeService {
 
     private final Logger log = LoggerFactory.getLogger(Product_typeServiceImpl.class);
 
-    private final Product_typeRepository product_typeRepository;
+    private final ProductTypeRepository product_typeRepository;
 
-    public Product_typeServiceImpl(Product_typeRepository product_typeRepository) {
+    public Product_typeServiceImpl(ProductTypeRepository product_typeRepository) {
         this.product_typeRepository = product_typeRepository;
     }
 
@@ -34,7 +34,7 @@ public class Product_typeServiceImpl implements Product_typeService {
      * @return the persisted entity
      */
     @Override
-    public Product_type save(Product_type product_type) {
+    public ProductType save(ProductType product_type) {
         log.debug("Request to save Product_type : {}", product_type);
         return product_typeRepository.save(product_type);
     }
@@ -46,7 +46,7 @@ public class Product_typeServiceImpl implements Product_typeService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Product_type> findAll() {
+    public List<ProductType> findAll() {
         log.debug("Request to get all Product_types");
         return product_typeRepository.findAll();
     }
@@ -60,7 +60,7 @@ public class Product_typeServiceImpl implements Product_typeService {
      */
     @Override
     @Transactional(readOnly = true)
-    public Optional<Product_type> findOne(Long id) {
+    public Optional<ProductType> findOne(Long id) {
         log.debug("Request to get Product_type : {}", id);
         return product_typeRepository.findById(id);
     }

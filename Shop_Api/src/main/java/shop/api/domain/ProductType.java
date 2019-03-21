@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "product_type")
-public class Product_type implements Serializable {
+public class ProductType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,7 @@ public class Product_type implements Serializable {
         return name;
     }
 
-    public Product_type name(String name) {
+    public ProductType name(String name) {
         this.name = name;
         return this;
     }
@@ -51,7 +51,7 @@ public class Product_type implements Serializable {
         return image;
     }
 
-    public Product_type image(String image) {
+    public ProductType image(String image) {
         this.image = image;
         return this;
     }
@@ -69,7 +69,7 @@ public class Product_type implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Product_type product_type = (Product_type) o;
+        ProductType product_type = (ProductType) o;
         if (product_type.getId() == null || getId() == null) {
             return false;
         }

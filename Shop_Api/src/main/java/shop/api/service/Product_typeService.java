@@ -1,6 +1,6 @@
 package shop.api.service;
 
-import shop.api.domain.Product_type;
+import shop.api.domain.ProductType;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,14 +16,14 @@ public interface Product_typeService {
      * @param product_type the entity to save
      * @return the persisted entity
      */
-    Product_type save(Product_type product_type);
+    ProductType save(ProductType product_type);
 
     /**
      * Get all the product_types.
      *
      * @return the list of entities
      */
-    List<Product_type> findAll();
+    List<ProductType> findAll();
 
 
     /**
@@ -32,7 +32,7 @@ public interface Product_typeService {
      * @param id the id of the entity
      * @return the entity
      */
-    Optional<Product_type> findOne(Long id);
+    Optional<ProductType> findOne(Long id);
 
     /**
      * Delete the "id" product_type.

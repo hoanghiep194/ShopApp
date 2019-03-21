@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "bill_detail")
-public class Bill_detail implements Serializable {
+public class BillDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,7 +44,7 @@ public class Bill_detail implements Serializable {
         return idBill;
     }
 
-    public Bill_detail idBill(Long idBill) {
+    public BillDetail idBill(Long idBill) {
         this.idBill = idBill;
         return this;
     }
@@ -57,7 +57,7 @@ public class Bill_detail implements Serializable {
         return idProduct;
     }
 
-    public Bill_detail idProduct(Long idProduct) {
+    public BillDetail idProduct(Long idProduct) {
         this.idProduct = idProduct;
         return this;
     }
@@ -70,7 +70,7 @@ public class Bill_detail implements Serializable {
         return quantity;
     }
 
-    public Bill_detail quantity(Integer quantity) {
+    public BillDetail quantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -83,7 +83,7 @@ public class Bill_detail implements Serializable {
         return price;
     }
 
-    public Bill_detail price(Float price) {
+    public BillDetail price(Float price) {
         this.price = price;
         return this;
     }
@@ -101,7 +101,7 @@ public class Bill_detail implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Bill_detail bill_detail = (Bill_detail) o;
+        BillDetail bill_detail = (BillDetail) o;
         if (bill_detail.getId() == null || getId() == null) {
             return false;
         }

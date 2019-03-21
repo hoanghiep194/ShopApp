@@ -1,7 +1,7 @@
 package shop.api.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import shop.api.domain.Bill_detail;
+import shop.api.domain.BillDetail;
 import shop.api.service.Bill_detailService;
 import shop.api.web.rest.errors.BadRequestAlertException;
 import shop.api.web.rest.util.HeaderUtil;
@@ -22,15 +22,15 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-public class Bill_detailResource {
+public class BillDetailResource {
 
-    private final Logger log = LoggerFactory.getLogger(Bill_detailResource.class);
+    private final Logger log = LoggerFactory.getLogger(BillDetailResource.class);
 
     private static final String ENTITY_NAME = "bill_detail";
 
     private final Bill_detailService bill_detailService;
 
-    public Bill_detailResource(Bill_detailService bill_detailService) {
+    public BillDetailResource(Bill_detailService bill_detailService) {
         this.bill_detailService = bill_detailService;
     }
 
@@ -43,12 +43,12 @@ public class Bill_detailResource {
      */
     @PostMapping("/bill-details")
     @Timed
-    public ResponseEntity<Bill_detail> createBill_detail(@RequestBody Bill_detail bill_detail) throws URISyntaxException {
+    public ResponseEntity<BillDetail> createBill_detail(@RequestBody BillDetail bill_detail) throws URISyntaxException {
         log.debug("REST request to save Bill_detail : {}", bill_detail);
         if (bill_detail.getId() != null) {
             throw new BadRequestAlertException("A new bill_detail cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Bill_detail result = bill_detailService.save(bill_detail);
+        BillDetail result = bill_detailService.save(bill_detail);
         return ResponseEntity.created(new URI("/api/bill-details/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -65,12 +65,12 @@ public class Bill_detailResource {
      */
     @PutMapping("/bill-details")
     @Timed
-    public ResponseEntity<Bill_detail> updateBill_detail(@RequestBody Bill_detail bill_detail) throws URISyntaxException {
+    public ResponseEntity<BillDetail> updateBill_detail(@RequestBody BillDetail bill_detail) throws URISyntaxException {
         log.debug("REST request to update Bill_detail : {}", bill_detail);
         if (bill_detail.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Bill_detail result = bill_detailService.save(bill_detail);
+        BillDetail result = bill_detailService.save(bill_detail);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, bill_detail.getId().toString()))
             .body(result);
@@ -83,7 +83,7 @@ public class Bill_detailResource {
      */
     @GetMapping("/bill-details")
     @Timed
-    public List<Bill_detail> getAllBill_details() {
+    public List<BillDetail> getAllBill_details() {
         log.debug("REST request to get all Bill_details");
         return bill_detailService.findAll();
     }
@@ -96,9 +96,9 @@ public class Bill_detailResource {
      */
     @GetMapping("/bill-details/{id}")
     @Timed
-    public ResponseEntity<Bill_detail> getBill_detail(@PathVariable Long id) {
+    public ResponseEntity<BillDetail> getBill_detail(@PathVariable Long id) {
         log.debug("REST request to get Bill_detail : {}", id);
-        Optional<Bill_detail> bill_detail = bill_detailService.findOne(id);
+        Optional<BillDetail> bill_detail = bill_detailService.findOne(id);
         return ResponseUtil.wrapOrNotFound(bill_detail);
     }
 

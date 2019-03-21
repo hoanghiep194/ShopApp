@@ -1,7 +1,7 @@
 package shop.api.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import shop.api.domain.Product_type;
+import shop.api.domain.ProductType;
 import shop.api.service.Product_typeService;
 import shop.api.web.rest.errors.BadRequestAlertException;
 import shop.api.web.rest.util.HeaderUtil;
@@ -22,15 +22,15 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
-public class Product_typeResource {
+public class ProductTypeResource {
 
-    private final Logger log = LoggerFactory.getLogger(Product_typeResource.class);
+    private final Logger log = LoggerFactory.getLogger(ProductTypeResource.class);
 
     private static final String ENTITY_NAME = "product_type";
 
     private final Product_typeService product_typeService;
 
-    public Product_typeResource(Product_typeService product_typeService) {
+    public ProductTypeResource(Product_typeService product_typeService) {
         this.product_typeService = product_typeService;
     }
 
@@ -43,12 +43,12 @@ public class Product_typeResource {
      */
     @PostMapping("/product-types")
     @Timed
-    public ResponseEntity<Product_type> createProduct_type(@RequestBody Product_type product_type) throws URISyntaxException {
+    public ResponseEntity<ProductType> createProduct_type(@RequestBody ProductType product_type) throws URISyntaxException {
         log.debug("REST request to save Product_type : {}", product_type);
         if (product_type.getId() != null) {
             throw new BadRequestAlertException("A new product_type cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Product_type result = product_typeService.save(product_type);
+        ProductType result = product_typeService.save(product_type);
         return ResponseEntity.created(new URI("/api/product-types/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -65,12 +65,12 @@ public class Product_typeResource {
      */
     @PutMapping("/product-types")
     @Timed
-    public ResponseEntity<Product_type> updateProduct_type(@RequestBody Product_type product_type) throws URISyntaxException {
+    public ResponseEntity<ProductType> updateProduct_type(@RequestBody ProductType product_type) throws URISyntaxException {
         log.debug("REST request to update Product_type : {}", product_type);
         if (product_type.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Product_type result = product_typeService.save(product_type);
+        ProductType result = product_typeService.save(product_type);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, product_type.getId().toString()))
             .body(result);
@@ -83,7 +83,7 @@ public class Product_typeResource {
      */
     @GetMapping("/product-types")
     @Timed
-    public List<Product_type> getAllProduct_types() {
+    public List<ProductType> getAllProduct_types() {
         log.debug("REST request to get all Product_types");
         return product_typeService.findAll();
     }
@@ -96,9 +96,9 @@ public class Product_typeResource {
      */
     @GetMapping("/product-types/{id}")
     @Timed
-    public ResponseEntity<Product_type> getProduct_type(@PathVariable Long id) {
+    public ResponseEntity<ProductType> getProduct_type(@PathVariable Long id) {
         log.debug("REST request to get Product_type : {}", id);
-        Optional<Product_type> product_type = product_typeService.findOne(id);
+        Optional<ProductType> product_type = product_typeService.findOne(id);
         return ResponseUtil.wrapOrNotFound(product_type);
     }
 

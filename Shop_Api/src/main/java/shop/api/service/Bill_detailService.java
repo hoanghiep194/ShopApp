@@ -1,6 +1,6 @@
 package shop.api.service;
 
-import shop.api.domain.Bill_detail;
+import shop.api.domain.BillDetail;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,14 +16,14 @@ public interface Bill_detailService {
      * @param bill_detail the entity to save
      * @return the persisted entity
      */
-    Bill_detail save(Bill_detail bill_detail);
+    BillDetail save(BillDetail bill_detail);
 
     /**
      * Get all the bill_details.
      *
      * @return the list of entities
      */
-    List<Bill_detail> findAll();
+    List<BillDetail> findAll();
 
 
     /**
@@ -32,7 +32,7 @@ public interface Bill_detailService {
      * @param id the id of the entity
      * @return the entity
      */
-    Optional<Bill_detail> findOne(Long id);
+    Optional<BillDetail> findOne(Long id);
 
     /**
      * Delete the "id" bill_detail.
