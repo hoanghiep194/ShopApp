@@ -1,6 +1,6 @@
 package shop.api.service.impl;
 
-import shop.api.service.Bill_detailService;
+import shop.api.service.BillDetailService;
 import shop.api.domain.BillDetail;
 import shop.api.repository.BillDetailRepository;
 import org.slf4j.Logger;
@@ -17,13 +17,13 @@ import java.util.Optional;
  */
 @Service
 @Transactional
-public class Bill_detailServiceImpl implements Bill_detailService {
+public class BillDetailServiceImpl implements BillDetailService {
 
-    private final Logger log = LoggerFactory.getLogger(Bill_detailServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(BillDetailServiceImpl.class);
 
     private final BillDetailRepository bill_detailRepository;
 
-    public Bill_detailServiceImpl(BillDetailRepository bill_detailRepository) {
+    public BillDetailServiceImpl(BillDetailRepository bill_detailRepository) {
         this.bill_detailRepository = bill_detailRepository;
     }
 

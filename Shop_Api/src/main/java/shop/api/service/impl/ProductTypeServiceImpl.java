@@ -1,6 +1,6 @@
 package shop.api.service.impl;
 
-import shop.api.service.Product_typeService;
+import shop.api.service.ProductTypeService;
 import shop.api.domain.ProductType;
 import shop.api.repository.ProductTypeRepository;
 import org.slf4j.Logger;
@@ -17,13 +17,13 @@ import java.util.Optional;
  */
 @Service
 @Transactional
-public class Product_typeServiceImpl implements Product_typeService {
+public class ProductTypeServiceImpl implements ProductTypeService {
 
-    private final Logger log = LoggerFactory.getLogger(Product_typeServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(ProductTypeServiceImpl.class);
 
     private final ProductTypeRepository product_typeRepository;
 
-    public Product_typeServiceImpl(ProductTypeRepository product_typeRepository) {
+    public ProductTypeServiceImpl(ProductTypeRepository product_typeRepository) {
         this.product_typeRepository = product_typeRepository;
     }
 

@@ -8,7 +8,7 @@ import java.util.Optional;
 /**
  * Service Interface for managing Bill_detail.
  */
-public interface Bill_detailService {
+public interface BillDetailService {
 
     /**
      * Save a bill_detail.

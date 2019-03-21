@@ -1,22 +1,32 @@
 package shop.api.web.rest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.codahale.metrics.annotation.Timed;
+
+import io.github.jhipster.web.util.ResponseUtil;
 import shop.api.domain.Product;
 import shop.api.service.ProductService;
 import shop.api.service.dto.ProductDto;
+import shop.api.web.rest.common.ResponseCommon;
 import shop.api.web.rest.errors.BadRequestAlertException;
 import shop.api.web.rest.util.HeaderUtil;
-import io.github.jhipster.web.util.ResponseUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * REST controller for managing Product.
@@ -81,12 +91,15 @@ public class ProductResource {
      * GET  /products : get all the products.
      *
      * @return the ResponseEntity with status 200 (OK) and the list of products in body
+     * @throws Exception 
      */
     @GetMapping("/products")
     @Timed
-    public List<ProductDto> getAllProducts() {
+    public ResponseEntity<?> getAllProducts() throws Exception {
         log.debug("REST request to get all Products");
-        return productService.getProducts();
+        List<ProductDto> result = productService.getProducts();
+        return new ResponseEntity<>(ResponseCommon.createResponse(result, "N00-1"),
+            HttpStatus.OK);
     }
 
     /**

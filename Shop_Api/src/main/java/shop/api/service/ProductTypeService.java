@@ -8,7 +8,7 @@ import java.util.Optional;
 /**
  * Service Interface for managing Product_type.
  */
-public interface Product_typeService {
+public interface ProductTypeService {
 
     /**
      * Save a product_type.
