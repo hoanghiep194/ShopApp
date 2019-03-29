@@ -1,10 +1,10 @@
-const MainScreen = 'MainScreen1';
+const MainScreen1 = 'MainScreen1';
 const AuthenticationScreen = 'AuthenticationScreen';
 const ChangeInfoScreen = 'ChangeInfoScreen';
 const OrderHistoryScreen = 'OrderHistoryScreen';
 
 export {
-    MainScreen,
+    MainScreen1,
     AuthenticationScreen,
     ChangeInfoScreen,
     OrderHistoryScreen

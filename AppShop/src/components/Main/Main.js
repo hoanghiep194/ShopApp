@@ -7,16 +7,18 @@
  */
 
 import React, {Component} from 'react';
-import {tyleSheet, Text, View, Image} from 'react-native';
+import {styleSheet, Text, View, Image} from 'react-native';
 import Button from 'react-native-button';
 
 import {AuthenticationScreen, ChangeInfoScreen, OrderHistoryScreen} from '../../../screenNames';
 import Header from '../Header';
+import Home from './Shop/Home/Home';
 
 export default class Main extends Component {
  
   static navigationOptions = {
-    drawerLabel: 'Notifications',
+    drawerLabel: 'Main',
+    tabBarLabel: 'Main',
     drawerIcon: ({ }) => (
       <Image
         source={require('../../icon/back.png')}
@@ -32,9 +34,7 @@ export default class Main extends Component {
 
       <View style={{flex: 1, flexDirection: 'column'}}>
         <Header {...this.props} />
-        <View style={{flex: 1, backgroundColor: 'red'}}>
-            <Text>Wearing a Dress</Text>
-        </View>
+        <Home/>
       </View>
     );
   }
