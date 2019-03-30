@@ -14,13 +14,13 @@ export default class Header extends Component {
                             navigation.openDrawer();
                         }}>
                         <Image 
-                            source={require('../icon/ic_menu.png')}
+                            source={require('../../icon/ic_menu.png')}
                             style={{ width:30, height: 30}}
                         />
                     </TouchableOpacity>
                     <Text style={{ color:'#FFF', fontFamily:'Avenir', fontSize: 20}}>Wearing a Dress</Text>
                     <Image 
-                        source={require('../icon/ic_logo.png')}
+                        source={require('../../icon/ic_logo.png')}
                         style={{ width:30, height: 30}}
                     />
                 </View>

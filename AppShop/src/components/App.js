@@ -11,34 +11,41 @@ import {StyleSheet, Text, View, StatusBar, Dimensions} from 'react-native';
 import {createAppContainer, createDrawerNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import Main from './Main/Main';
+
 import Authentication from './Authentication/Authentication';
 import ChangeInfo from './ChangeInfo/ChangeInfo';
 import OrderHistory from './OrderHistory/OrderHistory';
 
-import {MainScreen1, AuthenticationScreen, ChangeInfoScreen, OrderHistoryScreen} from '../../screenNames';
+import Shop from './Main/Shop/Shop';
+import Cart from './Main/Shop/Cart/Cart';
+import Search from './Main/Shop/Search/Search';
+import Contact from './Main/Shop/Contact/Contact';
+
+import {MainScreen1, AuthenticationScreen, ChangeInfoScreen, OrderHistoryScreen, 
+    HomeTab, CartTab, SearchTab, ContactTab } from '../../screenNames';
 
 StatusBar.setHidden(true);
 var {height,width} = Dimensions.get('window');
 
 let routeTabConfigs = {
-    MainScreen1: {
-        screen: Main
+    HomeTab: {
+        screen: Shop
     },
-    AuthenticationScreen: {
-        screen: Authentication
+    CartTab: {
+        screen: Cart
     },
-    ChangeInfoScreen: {
-        screen: ChangeInfo
+    SearchTab: {
+        screen: Search
     },
-    OrderHistoryScreen: {
-        screen: OrderHistory
-    },
+    ContactTab: {
+        screen: Contact
+    }
 }
 
 let tabNavigatorConfig = {
     tabBarPosition: 'bottom',
     animationEnabled: true,
-    swipeEnabled: true
+    swipeEnabled: true,
 }
 
 const tabBar = createBottomTabNavigator(routeTabConfigs,tabNavigatorConfig);

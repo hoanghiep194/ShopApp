@@ -7,28 +7,25 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, Icon} from 'react-native';
-import Header from '../../Main/Header';
-import Home from './Home/Home';
+import {SyleSheet, Text, View, Image} from 'react-native';
 
-export default class Shop extends Component {
-
+export default class Search extends Component {
+ 
   static navigationOptions = {
-    tabBarLabel: 'Home',
+    tabBarLabel: 'Search',
     tabBarIcon: () => {
         return <Image
-          source={require('../../../icon/home.png')}
+          source={require('../../../../icon/search.png')}
           style={{ width: 26, height: 26, tintColor: '#007256' }}
         />
     }
   };
-
   render() {
 
     return (
+
       <View style={{flex: 1, flexDirection: 'column'}}>
-        <Header {...this.props} />
-        <Home/>
+        <Text>Search</Text>
       </View>
     );
   }
