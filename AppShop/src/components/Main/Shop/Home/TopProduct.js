@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image, Dimensions, ListView , FlatList} from 'react-native';
 import Swiper from 'react-native-swiper';
+
+
 
 
 
@@ -8,50 +10,45 @@ const { height, width } = Dimensions.get('window');
 
 export default class TopProduct extends Component {
 
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    //     };
+    // }
+
+    // componentDidMount() {
+        
+    //     const { topProduct } = this.props;
+    //     this.setState({
+    //         dataSource: this.state.dataSource.cloneWithRows(topProduct)
+    //     })
+    // }
+
     render() {
-
+        const url = `http://10.1.10.166/Images/`;
         const { wrapper, imageStyle, textStyle, body, productContainer, nameStyle, priceStyle } = styles;
-
-        return(
+        console.log(this.props.topProduct);
+        return (
             <View style={wrapper}>
-                <View style={{justifyContent:'center', height: 50}}>
+                <View style={{ justifyContent: 'center', height: 50 }}>
                     <Text style={textStyle}>TOP PRODUCT</Text>
                 </View>
-                <View style={body}>
-                    <View style={productContainer}>
-                        <Image 
-                            source={require('../../../../images/sp1.jpeg')}
+
+                <ListView 
+                    contentContainerStyle={body}
+                    dataSource={new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }).cloneWithRows(this.props.topProduct)}
+                    renderRow={item => (
+                        <View style={productContainer}>
+                        <Image
+                            source={{uri: `${url}${item.images.split(',')[0]}`}}
                             style={imageStyle}
                         />
-                        <Text style={nameStyle}>Product Name</Text>
-                        <Text style={priceStyle}>250$</Text>
+                        <Text style={nameStyle}>{item.name.toUpperCase()}</Text>
+                        <Text style={priceStyle}>{item.price}$</Text>
                     </View>
-                    <View style={productContainer}>
-                        <Image 
-                            source={require('../../../../images/sp2.jpeg')}
-                            style={imageStyle}
-                        />
-                        <Text style={nameStyle}>Product Name</Text>
-                        <Text style={priceStyle}>340$</Text>
-                    </View>
-                    <View style={{height: 10, width}}></View>
-                    <View style={productContainer}>
-                        <Image 
-                            source={require('../../../../images/sp3.jpeg')}
-                            style={imageStyle}
-                        />
-                        <Text style={nameStyle}>Product Name</Text>
-                        <Text style={priceStyle}>700$</Text>
-                    </View>
-                    <View style={productContainer}>
-                        <Image 
-                            source={require('../../../../images/sp4.jpeg')}
-                            style={imageStyle}
-                        />
-                        <Text style={nameStyle}>Product Name</Text>
-                        <Text style={priceStyle}>360$</Text>
-                    </View>
-                </View>
+                    )}
+                />
             </View>
         );
     }
@@ -66,11 +63,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         margin: 10,
         shadowColor: '#2E272B',
-        shadowOffset: {width: 0, height: 3},
+        shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         paddingTop: 0
     },
-    body:{
+    body: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         flexWrap: 'wrap'
@@ -87,7 +84,7 @@ const styles = StyleSheet.create({
         width: imageWidth,
         shadowColor: '#2E272B',
         paddingBottom: 20,
-        shadowOffset: {width: 0, height: 3},
+        shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2
     },
     nameStyle: {

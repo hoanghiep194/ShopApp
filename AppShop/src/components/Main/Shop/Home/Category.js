@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text, View, ImageBackground, Dimensions} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, ImageBackground, Dimensions, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 
+import { ListProductScreen } from '../../../../../screenNames';
 
 
 const { height, width } = Dimensions.get('window');
@@ -11,30 +12,29 @@ export default class Category extends Component {
     render() {
 
         const { wrapper, imageStyle, textStyle, textImage } = styles;
-
-        return(
+        const url = `http://10.1.10.166/Images/`;
+        return (
             <View style={wrapper}>
-                <View style={{flex: 1, justifyContent:'center'}}>
+                <View style={{ flex: 1, justifyContent: 'center' }}>
                     <Text style={textStyle}>SPRING COLLECTION</Text>
                 </View>
-                <View style={{flex: 3}}>
+                <View style={{ flex: 3 }}>
                     <Swiper autoplay={true}>
-                        <ImageBackground 
-                            source={require('../../../../images/little.jpg')}
-                            style={imageStyle}>
-                            <Text style={textImage}>Little Dress</Text>
-                        </ImageBackground>
-                        <ImageBackground 
-                            source={require('../../../../images/maxi.jpg')}
-                            style={imageStyle}>
-                            <Text style={textImage}>Maxi Dress</Text>
-                        </ImageBackground>
-                        <ImageBackground 
-                            source={require('../../../../images/party.jpg')}
-                            style={imageStyle}>
-                            <Text style={textImage}>Party Dress</Text>
-                        </ImageBackground>
-                    </Swiper>
+                        {this.props.productType.map(e => (
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.props.navigation.navigate(ListProductScreen);
+                                }}
+                                key={e.id}
+                            >
+                                <ImageBackground
+                                    source={{ uri: `${url}${e.image}`}}
+                                    style={imageStyle}>
+                                    <Text style={textImage}>{e.name}</Text>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                        ))}
+                    </Swiper> 
                 </View>
 
             </View>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         margin: 10,
         shadowColor: '#2E272B',
-        shadowOffset: {width: 0, height: 3},
+        shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         padding: 10,
         paddingTop: 0,

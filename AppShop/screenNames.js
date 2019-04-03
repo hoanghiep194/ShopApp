@@ -8,6 +8,9 @@ const CartTab = 'CartTab';
 const SearchTab = 'SearchTab';
 const ContactTab = 'ContactTab';
 
+const HomeViewScreen = "HomeViewScreen";
+const TopProductScreen = "TopProductScreen";
+
 export {
     MainScreen1,
     AuthenticationScreen,
@@ -16,5 +19,7 @@ export {
     HomeTab,
     CartTab,
     SearchTab,
-    ContactTab
+    ContactTab,
+    HomeViewScreen,
+    TopProductScreen
 }

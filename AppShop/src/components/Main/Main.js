@@ -19,7 +19,7 @@ export default class Main extends Component {
     const {navigate} = this.props.navigation;
 
     return (
-      <Shop />
+      <Shop {...this.props}/>
     );
   }
 }
